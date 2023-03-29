@@ -9,7 +9,7 @@ from email.mime.text import MIMEText
 
 
 # Change your API KEY here -
-OPENAI_API_KEY = "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"
+OPENAI_API_KEY = "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"
 
 imap_host = 'imap.gmail.com'
 
