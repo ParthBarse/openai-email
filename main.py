@@ -4,6 +4,7 @@ import os
 import openai
 import smtplib
 import random
+import time
 from email.mime.text import MIMEText
 
 
@@ -73,11 +74,15 @@ def check_mail(num):
 imap = imaplib.IMAP4_SSL(imap_host)
 imap.login(imap_user, imap_pass)
 
-try:
-    imap.select("inbox")
-    status, emails = imap.search(None, 'UNSEEN')
-    check_mail(1)
-except Exception as e:
-    print("Error - ", e)
+
+while True:
+    try:
+        imap.select("inbox")
+        status, emails = imap.search(None, 'UNSEEN')
+        check_mail(1)
+        time.sleep(5)
+    except Exception as e:
+        time.sleep(5)
+        print("Error - ", e)
 
 imap.logout()
